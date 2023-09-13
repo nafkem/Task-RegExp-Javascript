@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expression</title>
+</head>
+<body>
+    <script>
+//1. Imagine you have written a story and used single quotation marks throughout
+//to mark pieces of dialogue. Now you want to replace all the dialogue quotes
+//with double quotes, while keeping the single quotes used in contractions like
+//aren’t.Think of a pattern that distinguishes these two kinds of quote usage and
+//craft a call to the replace method that does the proper replacement using javascript
+
+//using a simple search and replace method
+// Your story with single quotes for dialogues
+let paragraph="My best friend said, 'She won't come to the party.' Her cousin replied,' won't you even try?'";
+
+// Replace single quotes around dialogues with double quotes
+let updateParagraph = paragraph.replace(/(^|\W)'|'(\W]$)/g, '$1"');
+
+// Output the updated story
+console.log(updateParagraph);
+
+
+//2.
+// This code helps us figure out if some text is a real number or not.
+// To be a number, it needs to follow these rules:
+// - It can start with a plus (+) or minus (-) sign (or not).
+// - It can have a dot (.) in the middle, but not at the start or end.
+// - It can use a special way to write big or small numbers, like 5e-3.
+
+let numberPattern = new RegExp(/^[-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?$/);
+
+// Now, let's test it:
+console.log(numberPattern.test("-5.2e-3"));
+console.log(numberPattern.test("1E10"));
+console.log(numberPattern.test(".5"));
+console.log(numberPattern.test("5."));
+console.log(numberPattern.test("."));
+
+
+//3.
+let text = "Contact me at nafkem@gmail.com";
+
+// We're using a code pattern to shield the email with ****
+let protectedText = text.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]/g, '****');
+
+console.log(protectedText);
+
+//4.
+let text1 = "I have a car and a cat.";
+
+// This code checks if the text has 'car' or 'cat'
+let regex = /car|cat/;
+let result = regex.test(text1);
+
+console.log(result); // true (it contains 'car' and 'cat')
+
+let text = "I like to pop popcorn, but propellers are cool too.";
+
+// This code checks if the text has 'pop' or 'prop'
+let regex = /pop|prop/;
+let result = regex.test(text);
+
+console.log(result); // true (it contains 'pop' and 'prop')
+
+let text = "I saw a ferret, took a ferry, and dreamed of a Ferrari.";
+
+// This code checks if the text has 'ferret,' 'ferry,' or 'ferrari'
+let regex = /ferret|ferry|ferrari/;
+let result = regex.test(text);
+
+console.log(result); // true (it contains 'ferret,' 'ferry,' and 'ferrari')
+let text = "Delicious, nutritious, and suspicious are some words.";
+
+// This code checks if the text has words ending with 'ious'
+let regex = /\b\w*ious\b/;
+let result = regex.test(text);
+
+console.log(result); // true (it contains 'Delicious,' 'nutritious,' and 'suspicious')
+let text = "Hello . How are you , What's up : Good; Bye.";
+
+// This code checks if the text has whitespace followed by punctuation
+let regex = /\s[.,:;]/;
+let result = regex.test(text);
+
+console.log(result); // true (it contains whitespace followed by '.', ',', ':', and ';')
+let text = "The quick brown fox is jumping over the lazy dog.";
+
+// This code checks if the text has words longer than six letters
+let regex = /\b\w{7,}\b/;
+let result = regex.test(text);
+
+console.log(result); // true (it contains words longer than six letters)
+
+let text = "Hello World! Exciting examples here.";
+
+// This code checks if the text contains words without the letter 'e' (case-insensitive)
+let regex = /\b[^eE\s]+\b/g;
+let result = text.match(regex);
+
+console.log(result); // ["World!",]
+
+
+    </script>
+</body>
+</html>
